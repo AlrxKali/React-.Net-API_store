@@ -8,3 +8,8 @@ export interface Product {
     brand: string;
     quantityInStock: number;
 }
+
+export interface Props {
+    products: Product[];
+  //addProduct: () => void;
+}
