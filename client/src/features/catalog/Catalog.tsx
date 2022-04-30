@@ -1,15 +1,28 @@
+import { Avatar, List, ListItem, ListItemAvatar, ListItemText } from '@mui/material';
 import React from 'react'
+import { Product } from '../../app/models/product';
 
+interface Props {
+  products: Product[];
+  //addProduct: () => void;
+}
 
-function Catalog(props: any) {
+function Catalog({products}: Props) {
   return (
     <>
       <div>Catalog</div>
-      <ul>
-        {props.products.map((product: any) => (
-          <li key={product.id}>{product.name} - {product.price}</li>
+      <List>
+        {products.map((product) => (
+          <ListItem key={product.id}>
+            <ListItemAvatar>
+              <Avatar src={product.pictureUrl}/>
+            </ListItemAvatar>
+            <ListItemText>
+              {product.name} - {product.price}
+            </ListItemText>
+          </ListItem>
         ))}
-      </ul>
+      </List>
     </>
   )
 }
