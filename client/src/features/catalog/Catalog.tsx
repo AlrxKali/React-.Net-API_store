@@ -1,10 +1,19 @@
-import { Props } from '../../app/models/product';
+import { useState, useEffect } from 'react';
+import { Product } from '../../app/models/product';
 import ProductList from './ProductList';
 
-function Catalog({products}: Props) {
+function Catalog() {
+
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/products')
+    .then(response => response.json())
+    .then(data => setProducts(data))
+  }, []);
+
   return (
     <>
-      <div>Catalog</div>
       <ProductList products={products}/>
     </>
   )
